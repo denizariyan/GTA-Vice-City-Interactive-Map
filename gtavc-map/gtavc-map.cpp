@@ -31,7 +31,7 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 																					*/
 		mouseData[0] = -(478 - x);
 		mouseData[1] = 414 - y;
-		writeCoords(0, 0);
+		writeCoords(mouseData[0]* 3.91232329951, mouseData[1]* 3.91232329951,15.0);
 	}
 	else if (event == EVENT_RBUTTONDOWN)
 	{

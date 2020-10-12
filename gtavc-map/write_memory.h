@@ -1,3 +1,3 @@
 #pragma once
 
-int writeCoords(int x, int y);
+void writeCoords(float x, float y, float z = -100.0);
