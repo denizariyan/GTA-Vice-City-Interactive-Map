@@ -10,10 +10,10 @@
 #include "write_memory.h"
 
 #define _WIN32_WINNT _WIN32_WINNT_WIN7 /**
-* Set minimum operating system targeted to Win7 so the PROCESS_ALL_ACCESS flag doesnt get huge
-* check https://docs.microsoft.com/en-us/windows/win32/winprog/using-the-windows-headers for 
-* further information if you need to target a older OS
-*/
+	* Set minimum operating system targeted to Win7 so the PROCESS_ALL_ACCESS flag doesnt get huge
+	* check https://docs.microsoft.com/en-us/windows/win32/winprog/using-the-windows-headers for 
+	* further information if you need to target a older OS
+	*/
 
 using namespace cv;
 
@@ -24,11 +24,11 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 	if (event == EVENT_LBUTTONDOWN)
 	{
 		std::cout << "M1 (" << -(478 - x) << ", " << 414 - y << ")" << std::endl;  /**
-* -478 and -414 to fix the (0,0) point
-* becasue the Vice City takes the middle of the the map
-* in a weird spot. Also inverse the x to match
-* the Vice City way of coords
-*/
+	* -478 and -414 to fix the (0,0) point
+	* becasue the Vice City takes the middle of the the map
+	* in a weird spot. Also inverse the x to match
+	* the Vice City way of coords
+	*/
 		mouseData[0] = -(478 - x);
 		mouseData[1] = 414 - y;
 		writeCoords(mouseData[0]* 3.91232329951, mouseData[1]* 3.91232329951,15.0);
