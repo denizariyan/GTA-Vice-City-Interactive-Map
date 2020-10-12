@@ -62,6 +62,7 @@ int main()
 	if (I.empty())
 	{
 		std::cout << "Can't find/read image!" << std::endl;
+		system("pause");
 		return -1;
 	}
 

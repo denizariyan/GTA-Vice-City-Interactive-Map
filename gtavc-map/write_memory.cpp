@@ -28,7 +28,7 @@ void writeCoords(float x, float y, float z = -100.0) {
 	if (!hwnd)
 	{
 		cout << "Could not find the Vice City window! Run the game before starting the exe!\n";
-		cin.get();
+		system("pause");
 	}
 
 	GetWindowThreadProcessId(hwnd, &pid);
@@ -36,7 +36,7 @@ void writeCoords(float x, float y, float z = -100.0) {
 	if (!phandle)
 	{
 		cout << "Could not get handle! Make sure you are running the exe with admin priv\n";
-		cin.get();
+		system("pause");
 	}
 
 	DWORD addressX = FindDMAAddy(phandle, baseAddress, { offsetX });
