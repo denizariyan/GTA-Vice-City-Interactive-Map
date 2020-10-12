@@ -18,5 +18,13 @@
     <ClCompile Include="gtavc-map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="write_memory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="write_memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

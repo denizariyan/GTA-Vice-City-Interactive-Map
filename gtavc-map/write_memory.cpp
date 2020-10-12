@@ -5,7 +5,6 @@
 using namespace std;
 
 int writeCoords(int x, int y) {
-	int result;
 
 	DWORD address = 0x7E48CC; // Memory offset for players left-right angle
 
@@ -34,5 +33,5 @@ int writeCoords(int x, int y) {
 		//ReadProcessMemory(phandle, (void*)address, &value, sizeof(value), 0);
 		
 
-	return result;
+	return 0;
 }
