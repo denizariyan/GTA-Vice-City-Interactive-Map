@@ -14,15 +14,20 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 {
 	if (event == EVENT_LBUTTONDOWN)
 	{
-		std::cout << "M1 (" << x << ", " << y << ")" << std::endl;
+		std::cout << "M1 (" << -(478 - x) << ", " << 414 - y << ")" << std::endl; /**
+																		    * -478 and -414 to fix the (0,0) point
+																			* becasue the Vice City takes the middle of the the map
+																			* in a weird spot. Also inverse the x to match
+																			* the Vice City way of coords
+																			*/
 	}
 	else if (event == EVENT_RBUTTONDOWN)
 	{
-		std::cout << "M2 (" << x << ", " << y << ")" << std::endl;
+		std::cout << "M2 (" << -(478- x)  << ", " << 414 -y  << ")" << std::endl;
 	}
 	else if (event == EVENT_MBUTTONDOWN)
 	{
-		std::cout << "M3 (" << x << ", " << y << ")" << std::endl;
+		std::cout << "M3 (" << -(478 - x) << ", " << 414 - y << ")" << std::endl;
 	}
 	/**
 	else if (event == EVENT_MOUSEMOVE)
