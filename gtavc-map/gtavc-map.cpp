@@ -5,10 +5,14 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/eigen.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+
 using namespace cv;
 int main()
 {
 	Mat I = imread("C:\\Users\\Deniz\\Pictures\\IMG_14540.jpg", IMREAD_UNCHANGED);
+	resize(I, I, cv::Size(), 0.25, 0.25);
+
 	if (I.empty())
 	{
 		std::cout << "!!! Failed imread(): image not found" << std::endl;
