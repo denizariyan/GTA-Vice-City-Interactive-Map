@@ -27,7 +27,7 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 																					* -478 and -414 to fix the (0,0) point
 																					* becasue the Vice City takes the middle of the the map
 																					* in a weird spot. Also inverse the x to match
-																					* the Vice City way of coords
+																					* the Vice City way of coords.
 																					*/
 		mouseData[0] = -(478 - x);
 		mouseData[1] = 414 - y;
