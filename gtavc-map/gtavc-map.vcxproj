@@ -118,6 +118,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\opencv\build\x64\vc15\lib;C:\opencv\build\x64\vc15;C:\opencv\build\include;C:\eigen3;C:\opencv\build\include\opencv2;C:/opencv/build/include;C:/opencv/build/include/opencv;C:/opencv/build/include/opencv2;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_world343d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

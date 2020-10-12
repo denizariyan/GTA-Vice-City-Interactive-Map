@@ -1,15 +1,30 @@
 #include <windows.h>
 #include <conio.h>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
+uintptr_t FindDMAAddy(HANDLE hProc, uintptr_t ptr, vector<unsigned int> offsets) // https://stackoverflow.com/a/56310967
+{
+	for (unsigned int i = 0; i < offsets.size(); ++i)
+	{
+		ReadProcessMemory(hProc, (BYTE*)ptr, &ptr, sizeof(ptr), 0);
+		ptr += offsets[i];
+	}
+	return ptr;
+}
+
 int writeCoords(int x, int y) {
 
-	DWORD address = 0x07E4B8C; // Memory offset for players left-right angle
+	DWORD baseAddress = 0x07E4B8C; // Memory pointer for player
 	DWORD offsetX = 0x34;
 	DWORD offsetY = 0x38;
 	DWORD offsetZ = 0x3C;
+
+	DWORD address = baseAddress + offsetX;
+
+	float value = 0.0;
 
 	DWORD pid; // Process ID
 	HWND hwnd; // Windows handle
@@ -30,11 +45,12 @@ int writeCoords(int x, int y) {
 		return -1;
 
 	}
+	WriteProcessMemory(phandle, (void*)address, &value, sizeof(value), NULL);
+	//cout << address;
 
-	WriteProcessMemory(phandle, baseAddress, (LPCVOID)newString, sz, &bytes_written);
-
-		//ReadProcessMemory(phandle, (void*)address, &value, sizeof(value), 0);
+	//ReadProcessMemory(phandle, (void*)address, &value, sizeof(value), 0);
 		
+	cout << fixed<<address;
 
 	return 0;
 }

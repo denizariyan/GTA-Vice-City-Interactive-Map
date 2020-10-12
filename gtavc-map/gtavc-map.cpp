@@ -7,6 +7,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/eigen.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+#include "write_memory.h"
 
 #define _WIN32_WINNT _WIN32_WINNT_WIN7 /**
 										* Set minimum operating system targeted to Win7 so the PROCESS_ALL_ACCESS flag doesnt get huge
@@ -30,6 +31,7 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 																					*/
 		mouseData[0] = -(478 - x);
 		mouseData[1] = 414 - y;
+		writeCoords(0, 0);
 	}
 	else if (event == EVENT_RBUTTONDOWN)
 	{
