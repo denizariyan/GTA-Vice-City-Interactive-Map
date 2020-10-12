@@ -6,7 +6,10 @@ using namespace std;
 
 int writeCoords(int x, int y) {
 
-	DWORD address = 0x7E48CC; // Memory offset for players left-right angle
+	DWORD address = 0x07E4B8C; // Memory offset for players left-right angle
+	DWORD offsetX = 0x34;
+	DWORD offsetY = 0x38;
+	DWORD offsetZ = 0x3C;
 
 	DWORD pid; // Process ID
 	HWND hwnd; // Windows handle
@@ -28,7 +31,7 @@ int writeCoords(int x, int y) {
 
 	}
 
-
+	WriteProcessMemory(phandle, baseAddress, (LPCVOID)newString, sz, &bytes_written);
 
 		//ReadProcessMemory(phandle, (void*)address, &value, sizeof(value), 0);
 		
