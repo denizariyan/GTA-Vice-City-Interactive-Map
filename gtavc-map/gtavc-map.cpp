@@ -9,6 +9,30 @@
 #include <opencv2/imgproc/imgproc.hpp>
 
 using namespace cv;
+
+void CallBackFunc(int event, int x, int y, int flags, void* userdata)
+{
+	if (event == EVENT_LBUTTONDOWN)
+	{
+		std::cout << "M1 (" << x << ", " << y << ")" << std::endl;
+	}
+	else if (event == EVENT_RBUTTONDOWN)
+	{
+		std::cout << "M2 (" << x << ", " << y << ")" << std::endl;
+	}
+	else if (event == EVENT_MBUTTONDOWN)
+	{
+		std::cout << "M3 (" << x << ", " << y << ")" << std::endl;
+	}
+	/**
+	else if (event == EVENT_MOUSEMOVE)
+	{
+		std::cout << "M_MOVED (" << x << ", " << y << ")" << std::endl;
+
+	}
+	*/
+}
+
 int main()
 {
 	Mat I = imread("./map.png", IMREAD_UNCHANGED);
@@ -16,12 +40,13 @@ int main()
 
 	if (I.empty())
 	{
-		std::cout << "!!! Failed imread(): image not found" << std::endl;
+		std::cout << "Can't find/read image!" << std::endl;
 		return -1;
 	}
 
-	namedWindow("Display window", CV_WINDOW_NORMAL);
+	namedWindow("Display window", WINDOW_GUI_EXPANDED);
 	imshow("Display window", I);
+	setMouseCallback("Display window", CallBackFunc, NULL);
 	waitKey(0);
 	return 0;
 }
