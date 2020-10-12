@@ -10,6 +10,8 @@
 
 using namespace cv;
 
+float mouseData[5];
+
 void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 {
 	if (event == EVENT_LBUTTONDOWN)
@@ -20,14 +22,20 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 																			* in a weird spot. Also inverse the x to match
 																			* the Vice City way of coords
 																			*/
+		mouseData[0] = -(478 - x);
+		mouseData[1] = 414 - y;
 	}
 	else if (event == EVENT_RBUTTONDOWN)
 	{
 		std::cout << "M2 (" << -(478- x)  << ", " << 414 -y  << ")" << std::endl;
+		mouseData[2] = -(478 - x);
+		mouseData[3] = 414 - y;
 	}
 	else if (event == EVENT_MBUTTONDOWN)
 	{
 		std::cout << "M3 (" << -(478 - x) << ", " << 414 - y << ")" << std::endl;
+		mouseData[4] = -(478 - x);
+		mouseData[5] = 414 - y;
 	}
 	/**
 	else if (event == EVENT_MOUSEMOVE)
