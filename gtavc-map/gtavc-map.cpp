@@ -34,6 +34,7 @@ SOFTWARE.
 #include <Windows.h>
 #include "write_memory.h"
 #include "overlay_image.h"
+#include "read_memory.h"
 
 #define _WIN32_WINNT _WIN32_WINNT_WIN7 /**
 										* Set minimum operating system targeted to Win7 so the PROCESS_ALL_ACCESS flag doesnt get huge
@@ -87,6 +88,7 @@ int main()
 {
 	Mat imageMap = imread("./map.png", IMREAD_UNCHANGED);
 	Mat imageMarker = imread("./marker.png", IMREAD_UNCHANGED);
+	Mat imageCombined;
 	resize(imageMarker, imageMarker, cv::Size(), 0.25, 0.25);
 
 	if (imageMap.empty() || imageMarker.empty())
@@ -98,8 +100,8 @@ int main()
 	namedWindow("Display window", WINDOW_GUI_EXPANDED);
 	while (true)
 	{
-		overlayImage(imageMap, imageMarker, imageMap, cv::Point(100, 100));
-		imshow("Display window", imageMap);
+		overlayImage(imageMap, imageMarker, imageCombined, cv::Point(read_coords('X'), read_coords('Y')));
+		imshow("Display window", imageCombined);
 		setMouseCallback("Display window", CallBackFunc, NULL);
 		waitKey(1);
 		Sleep(50);

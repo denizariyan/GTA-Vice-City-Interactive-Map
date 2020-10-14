@@ -12,7 +12,6 @@ void writeCoords(float x, float y, float z = -100.0) { /**
 														* ground floor if possible
 														*/
 														
-
 	DWORD baseAddress = 0x07E4B8C; // Memory pointer for player
 	DWORD offsetX = 0x34;
 	DWORD offsetY = 0x38;
