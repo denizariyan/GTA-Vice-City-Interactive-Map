@@ -7,6 +7,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/eigen.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+#include <Windows.h>
 #include "write_memory.h"
 
 #define _WIN32_WINNT _WIN32_WINNT_WIN7 /**
@@ -27,7 +28,7 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 																					* -478 and -414 to fix the (0,0) point
 																					* becasue the Vice City takes the middle of the the map
 																					* in a weird spot. Also inverse the x to match
-																					* the Vice City way of coords.
+																					* the Vice City way of coords
 																					*/
 		mouseData[0] = -(478 - x);
 		mouseData[1] = 414 - y;
@@ -56,19 +57,27 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 
 int main()
 {
-	Mat I = imread("./map.png", IMREAD_UNCHANGED);
-	//resize(I, I, cv::Size(), 0.25, 0.25);
+	Mat imageMap = imread("./map.png", IMREAD_UNCHANGED);
+	Mat imageMarker = imread("./marker.png", IMREAD_UNCHANGED);
+	//resize(imageMarker, imageMarker, cv::Size(), 0.25, 0.25);
 
-	if (I.empty())
+	if (imageMap.empty() || imageMarker.empty())
 	{
-		std::cout << "Can't find/read image!" << std::endl;
+		std::cout << "Can't find/read image(s)!" << std::endl;
 		system("pause");
 		return -1;
 	}
-
 	namedWindow("Display window", WINDOW_GUI_EXPANDED);
-	imshow("Display window", I);
-	setMouseCallback("Display window", CallBackFunc, NULL);
-	waitKey(0);
+	while (true)
+	{
+		Mat imageCombined(imageMap, Rect(7, 7, imageMarker.cols, imageMarker.rows));
+		imageMarker.copyTo(imageCombined);
+		imshow("Display window", imageMap);
+		setMouseCallback("Display window", CallBackFunc, NULL);
+		waitKey(1);
+		Sleep(50);
+	}
+
+
 	return 0;
 }
