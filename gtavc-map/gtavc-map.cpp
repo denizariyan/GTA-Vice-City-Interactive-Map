@@ -9,6 +9,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <Windows.h>
 #include "write_memory.h"
+#include "overlay_image.h"
 
 #define _WIN32_WINNT _WIN32_WINNT_WIN7 /**
 										* Set minimum operating system targeted to Win7 so the PROCESS_ALL_ACCESS flag doesnt get huge
@@ -32,7 +33,10 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 																					*/
 		mouseData[0] = -(478 - x);
 		mouseData[1] = 414 - y;
-		writeCoords(mouseData[0]* 3.91232329951, mouseData[1]* 3.91232329951,15.0);
+		writeCoords(mouseData[0]* 3.91232329951, mouseData[1]* 3.91232329951,15.0); /*
+																					 * Passing 15 as Z for testing purposes, multiplying by 3.9 
+																					 * to scale from the programs map to games map 
+																					 */
 	}
 	else if (event == EVENT_RBUTTONDOWN)
 	{
@@ -47,7 +51,7 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 		mouseData[5] = 414 - y;
 	}
 	/**
-	else if (event == EVENT_MOUSEMOVE)
+	else if (event == EVENT_MOUSEMOVE)  // Will be used to display the mous over x,y
 	{
 		std::cout << "M_MOVED (" << x << ", " << y << ")" << std::endl;
 
@@ -59,7 +63,7 @@ int main()
 {
 	Mat imageMap = imread("./map.png", IMREAD_UNCHANGED);
 	Mat imageMarker = imread("./marker.png", IMREAD_UNCHANGED);
-	//resize(imageMarker, imageMarker, cv::Size(), 0.25, 0.25);
+	resize(imageMarker, imageMarker, cv::Size(), 0.25, 0.25);
 
 	if (imageMap.empty() || imageMarker.empty())
 	{
@@ -70,8 +74,7 @@ int main()
 	namedWindow("Display window", WINDOW_GUI_EXPANDED);
 	while (true)
 	{
-		Mat imageCombined(imageMap, Rect(7, 7, imageMarker.cols, imageMarker.rows));
-		imageMarker.copyTo(imageCombined);
+		overlayImage(imageMap, imageMarker, imageMap, cv::Point(100, 100));
 		imshow("Display window", imageMap);
 		setMouseCallback("Display window", CallBackFunc, NULL);
 		waitKey(1);

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-uintptr_t FindDMAAddy(HANDLE hProc, uintptr_t ptr, vector<unsigned int> offsets) // https://stackoverflow.com/a/56310967
+uintptr_t FindDMAAddy(HANDLE hProc, uintptr_t ptr, vector<unsigned int> offsets) // Credit for this function only: https://stackoverflow.com/a/56310967
 {
 	for (unsigned int i = 0; i < offsets.size(); ++i)
 	{
@@ -15,7 +15,13 @@ uintptr_t FindDMAAddy(HANDLE hProc, uintptr_t ptr, vector<unsigned int> offsets)
 	return ptr;
 }
 
-void writeCoords(float x, float y, float z = -100.0) {
+void writeCoords(float x, float y, float z = -100.0) { /**
+														* Setting Z value to anything less than or equal to -100 means that the game engine will automatically
+													    * calculate the ground Z for us. Works only on areas that are loaded, assign a value if teleporting to 
+													    * an area that is not loaded, not required otherwise. Will select the top of a building instead of
+														* ground floor if possible
+														*/
+														
 
 	DWORD baseAddress = 0x07E4B8C; // Memory pointer for player
 	DWORD offsetX = 0x34;
@@ -39,7 +45,7 @@ void writeCoords(float x, float y, float z = -100.0) {
 		system("pause");
 	}
 
-	DWORD addressX = FindDMAAddy(phandle, baseAddress, { offsetX });
+	DWORD addressX = FindDMAAddy(phandle, baseAddress, { offsetX }); // Have to be recalculated for each game instance because this is a dynamic address
 	DWORD addressY = FindDMAAddy(phandle, baseAddress, { offsetY });
 	DWORD addressZ = FindDMAAddy(phandle, baseAddress, { offsetZ });
 

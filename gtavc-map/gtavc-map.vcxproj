@@ -167,9 +167,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="gtavc-map.cpp" />
+    <ClCompile Include="overlay_image.cpp" />
     <ClCompile Include="write_memory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="overlay_image.h" />
     <ClInclude Include="write_memory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
