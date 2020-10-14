@@ -167,10 +167,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="gtavc-map.cpp" />
+    <ClCompile Include="multi_offset_pointer.cpp" />
     <ClCompile Include="overlay_image.cpp" />
     <ClCompile Include="write_memory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="multi_offset_pointer.h" />
     <ClInclude Include="overlay_image.h" />
     <ClInclude Include="write_memory.h" />
   </ItemGroup>

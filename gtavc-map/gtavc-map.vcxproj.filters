@@ -24,12 +24,18 @@
     <ClCompile Include="overlay_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="multi_offset_pointer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="write_memory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="overlay_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="multi_offset_pointer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
