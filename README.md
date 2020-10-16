@@ -26,7 +26,8 @@ Intention of this project is to create a dev tool for GTA Vice City to be used f
 
 1. Launch the GTA Vice City v1.0 
 1. Run the executable with admin permissions
-1. Click on the generated map window to teleport to the location. In some cases where the game engine did not load the location which you are teleporting to, you might fall through the floor. The game should teleport you back to a safe location nearby in that case.
+1. The red marker on the map will always show the current location of the player
+1. Click on the generated map window to teleport to the location. In some cases where the game engine did not load the location which you are teleporting to, you might fall through the floor. The game should teleport you back to a safe location nearby in that case
 
 ## Examples
 Check [this video](https://www.youtube.com/watch?v=ycFpK5JHe00) for a demonstration.
