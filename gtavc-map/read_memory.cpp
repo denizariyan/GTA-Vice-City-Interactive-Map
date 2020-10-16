@@ -26,7 +26,7 @@ float read_coords(char axisToRead) {
 	}
 
 	GetWindowThreadProcessId(hwnd, &pid);
-	HANDLE phandle = OpenProcess(PROCESS_ALL_ACCESS, 0, pid); // PROCESS_VM_READ can be used for less memory usage when using older OS than win7
+	HANDLE phandle = OpenProcess(PROCESS_ALL_ACCESS, 0, pid); // PROCESS_VM_READ can be used for less memory usage when using an OS older than win7
 
 	if (!phandle)
 	{
