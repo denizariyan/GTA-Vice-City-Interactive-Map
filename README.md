@@ -8,7 +8,7 @@ Intention of this project is to create a dev tool for GTA Vice City to be used f
 
 1. Go to [the releases page](https://github.com/denizariyan/GTA-Vice-City-Interactive-Map/releases) and download the latest release.
 1. Extract the contents to a location.
-1. Run GTA Vice City v1.0
+1. Run GTA Vice City v1.0 International
 1. Run the provided executable with admin permissions
 1. Follow the instructions for usage below
 
