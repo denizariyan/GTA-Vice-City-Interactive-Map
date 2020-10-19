@@ -48,14 +48,14 @@ SOFTWARE.
 using namespace cv;
 
 float mouseData[6];
-float title[2] = {0,0};
+float title[4] = {0,0,0,0};
 std::string windowTitle;
 std::ostringstream windowTitleOSS;
 
 void setWindowName()
 {
 	windowTitleOSS.str(std::string());
-	windowTitleOSS << "GTA Vice City Interactive Map [Mouseover Coords (X: " << title[0] << ", Y: " << title[1] << ")]";
+	windowTitleOSS << "GTA VC Map by denizariyan [Player Coords (X: " << title[0] << ", Y: " << title[1] << "), Mouseover Coords (X: " << title[2] << ", Y: " << title[3] << ")]";
 	windowTitle = windowTitleOSS.str();
 	setWindowTitle("Display window", windowTitle);
 }
@@ -64,7 +64,8 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 {
 	if (event == EVENT_LBUTTONDOWN)
 	{
-		std::cout << "M1 (" << -(478 - x) << ", " << 414 - y << ")" << std::endl;  /**
+		//std::cout << "M1 (" << -(478 - x) << ", " << 414 - y << ")" << std::endl;  
+																				   /**
 																					* -478 and -414 to fix the (0,0) point
 																					* becasue the Vice City takes the middle of the the map
 																					* in a weird spot. Also inverse the x to match
@@ -79,17 +80,17 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 	}
 	else if (event == EVENT_RBUTTONDOWN)
 	{
-		std::cout << "M2 (" << -(478- x)  << ", " << 414 -y  << ")" << std::endl;
+		//std::cout << "M2 (" << -(478- x)  << ", " << 414 -y  << ")" << std::endl;
 		mouseData[2] = -(478 - x);
 		mouseData[3] = 414 - y;
 	}
 	else if (event == EVENT_MOUSEMOVE)  // Will be used to display the mous over x,y
 	{
-		std::cout << "M_MOVED (" << -(478 - x) << ", " << 414 - y << ")" << std::endl;
+		//std::cout << "M_MOVED (" << -(478 - x) << ", " << 414 - y << ")" << std::endl;
 		mouseData[4] = -(478 - x);
 		mouseData[5] = (414 - y);
-		title[0] = mouseData[4] * 3.91232329951;
-		title[1] = mouseData[5] * 3.91232329951;
+		title[2] = mouseData[4] * 3.91232329951;
+		title[3] = mouseData[5] * 3.91232329951;
 
 
 	}
@@ -113,6 +114,8 @@ int main()
 	while (true)
 	{
 		overlayImage(imageMap, imageMarker, imageCombined, cv::Point(read_coords('X'), read_coords('Y')));
+		title[0] = (read_coords('X')+ 28.37500 - 478.0)*3.91232329951;
+		title[1] = (-(read_coords('Y') + 54) + 414)*3.91232329951;
 		setWindowName();
 		setWindowTitle("Display window", windowTitle);
 		imshow("Display window", imageCombined);
