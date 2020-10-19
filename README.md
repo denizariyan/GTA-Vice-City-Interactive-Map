@@ -4,7 +4,7 @@ Intention of this project is to create a dev tool for GTA Vice City to be used f
 
 ## Installation
 
-### Using a precompiled executable for x64 only (Recommended)
+### Using a precompiled executable (Recommended) - x64 only
 
 1. Go to [the releases page](https://github.com/denizariyan/GTA-Vice-City-Interactive-Map/releases) and download the latest release.
 1. Extract the contents to a location.
