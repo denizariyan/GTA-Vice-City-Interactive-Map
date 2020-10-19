@@ -36,6 +36,10 @@ Check [this video](https://www.youtube.com/watch?v=ycFpK5JHe00) for a demonstrat
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## Disclaimer
+
+Rockstar Games does NOT endorse or sponsor this project. This is a community made project.
+
 ## License
 Copyright (c) 2020 Deniz Ariyan
 
