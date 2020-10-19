@@ -30,6 +30,9 @@
     <ClCompile Include="read_memory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="game_version.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="write_memory.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="read_memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

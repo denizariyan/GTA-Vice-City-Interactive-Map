@@ -166,6 +166,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="game_version.cpp" />
     <ClCompile Include="gtavc-map.cpp" />
     <ClCompile Include="multi_offset_pointer.cpp" />
     <ClCompile Include="overlay_image.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="write_memory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="game_version.h" />
     <ClInclude Include="multi_offset_pointer.h" />
     <ClInclude Include="overlay_image.h" />
     <ClInclude Include="read_memory.h" />

@@ -35,6 +35,7 @@ SOFTWARE.
 #include "write_memory.h"
 #include "overlay_image.h"
 #include "read_memory.h"
+#include "game_version.h"
 
 #define _WIN32_WINNT _WIN32_WINNT_WIN7 /**
 										* Set minimum operating system targeted to Win7 so the PROCESS_ALL_ACCESS flag doesnt get huge

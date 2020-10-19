@@ -4,12 +4,14 @@
 #include <vector>
 #include "multi_offset_pointer.h"
 #include <string>
+#include "game_version.h"
 
 float read_coords(char axisToRead) {
 
 	float value = 0.0;
 	
-	DWORD baseAddress = 0x07E4B8C; // Memory pointer for player
+	DWORD offset = versionOffset();
+	DWORD baseAddress = 0x07E4B8C + offset; // Memory pointer for player
 	DWORD offsetX = 0x34;
 	DWORD offsetY = 0x38;
 	DWORD offsetZ = 0x3C;
