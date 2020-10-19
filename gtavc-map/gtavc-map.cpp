@@ -36,6 +36,8 @@ SOFTWARE.
 #include "overlay_image.h"
 #include "read_memory.h"
 #include "game_version.h"
+#include <string>
+#include <sstream>
 
 #define _WIN32_WINNT _WIN32_WINNT_WIN7 /**
 										* Set minimum operating system targeted to Win7 so the PROCESS_ALL_ACCESS flag doesnt get huge
@@ -45,7 +47,18 @@ SOFTWARE.
 
 using namespace cv;
 
-float mouseData[5];
+float mouseData[6];
+float title[2] = {0,0};
+std::string windowTitle;
+std::ostringstream windowTitleOSS;
+
+void setWindowName()
+{
+	windowTitleOSS.str(std::string());
+	windowTitleOSS << "GTA Vice City Interactive Map [Mouseover Coords (X: " << title[0] << ", Y: " << title[1] << ")]";
+	windowTitle = windowTitleOSS.str();
+	setWindowTitle("Display window", windowTitle);
+}
 
 void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 {
@@ -70,23 +83,21 @@ void CallBackFunc(int event, int x, int y, int flags, void* userdata)
 		mouseData[2] = -(478 - x);
 		mouseData[3] = 414 - y;
 	}
-	else if (event == EVENT_MBUTTONDOWN)
-	{
-		std::cout << "M3 (" << -(478 - x) << ", " << 414 - y << ")" << std::endl;
-		mouseData[4] = -(478 - x);
-		mouseData[5] = 414 - y;
-	}
-	/**
 	else if (event == EVENT_MOUSEMOVE)  // Will be used to display the mous over x,y
 	{
-		std::cout << "M_MOVED (" << x << ", " << y << ")" << std::endl;
+		std::cout << "M_MOVED (" << -(478 - x) << ", " << 414 - y << ")" << std::endl;
+		mouseData[4] = -(478 - x);
+		mouseData[5] = (414 - y);
+		title[0] = mouseData[4] * 3.91232329951;
+		title[1] = mouseData[5] * 3.91232329951;
+
 
 	}
-	*/
 }
 
 int main()
 {
+
 	Mat imageMap = imread("./map.png", IMREAD_UNCHANGED);
 	Mat imageMarker = imread("./marker.png", IMREAD_UNCHANGED);
 	Mat imageCombined;
@@ -102,6 +113,8 @@ int main()
 	while (true)
 	{
 		overlayImage(imageMap, imageMarker, imageCombined, cv::Point(read_coords('X'), read_coords('Y')));
+		setWindowName();
+		setWindowTitle("Display window", windowTitle);
 		imshow("Display window", imageCombined);
 		setMouseCallback("Display window", CallBackFunc, NULL);
 		waitKey(1);
