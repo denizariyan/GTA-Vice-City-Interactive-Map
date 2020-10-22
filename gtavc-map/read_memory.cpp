@@ -51,6 +51,8 @@ float read_coords(char axisToRead) {
 	else
 	{
 		address = FindDMAAddy(phandle, baseAddress, { offsetZ });
+		ReadProcessMemory(phandle, (void*)address, &value, sizeof(value), NULL);
+		value = value;
 	}
 
 	float scaledResult = value;
